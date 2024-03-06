@@ -1,0 +1,80 @@
+@import url('./../../colors.css');
+
+
+.hover-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-link:hover {
+  transition: width ease 0.5ms;
+  cursor: pointer;
+  color: #A239CA;
+  overflow: hidden;
+}
+
+.hover-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0; /* Появление границы слева направо */
+  width: 0;
+  height: 2px; /* Высота границы */
+  background-color: #A239CA; /* Цвет границы */
+  transition: width 0.3s ease; /* Плавность анимации */
+  pointer-events: none; /* Предотвращение взаимодействия событий указателя */
+}
+
+.hover-link:hover::after {
+  transition: width 0.3s ease; /* Плавность анимации */
+  background-color: #A239CA; /* Цвет границы */
+
+  width: 100%; /* Полная ширина границы при наведении */
+}
+
+.active-link {
+  color: #A239CA;
+}
+.active-link:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0; /* Появление границы слева направо */
+  width: 100%;
+    height: 2px; /* Высота границы */
+  background-color: #A239CA;
+}
+
+.w-160 {
+    width: 170px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 0;
+  display: block;
+  overflow: hidden; /* Скрытие части линии за пределами блока */
+  z-index: 1;
+  max-height: 0; /* Начальная высота 0 */
+  visibility: hidden; /* Скрыть элемент, но сохранить его место в потоке документа */
+  -webkit-transition: max-height .3s ease, visibility .3s ease; /* Анимация изменения максимальной высоты и видимости */
+  transition: max-height .3s ease, visibility .3s ease;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0,0,0,.4);
+  
+}
+
+.dropdown-menu.active {
+  max-height: 160px; /* Максимальная высота при активации */
+  visibility: visible; /* Показать элемент */
+}
+
+.link ul {
+  padding: 0;
+  overflow: hidden;
+
+}
+  
+.link ul li:not(:last-child) {
+  border-bottom: 1px solid black; /* Линия между элементами, кроме последнего */
+}

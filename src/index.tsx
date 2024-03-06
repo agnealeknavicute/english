@@ -1,15 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
+import { Topics } from "./components/cards/Topics";
+import { Spelling } from "./components/cards/Spelling";
+import { Cards } from "./components/cards/Cards";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "spell-it/",
+        element: <Spelling />,
+        children: [
+          {
+            path: "topics/:topic",
+            element: <Cards />,
+          },
+          {
+            path: "",
+            element: <Topics />,
+          },
+        ],
+      },
+    ],
+  },
+]);
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
