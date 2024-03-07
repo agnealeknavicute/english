@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     "src/components/header/Header.tsx",
+    "src/components/cards/Topics.tsx"
   ],
   theme: {
     extend: {

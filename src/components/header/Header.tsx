@@ -2,15 +2,25 @@ import { useState } from "react";
 import "./header.css";
 import { AiFillCaretDown } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
+import { motion, Variants } from "framer-motion";
 
 interface IHeaderNavigation {
   name: string;
   path: string;
 }
 
+const itemVariants: Variants = {
+  open: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 300, damping: 24 },
+  },
+  closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
+};
+
 const Header = () => {
   let location = useLocation();
-  console.log(location.pathname);
+  console.log(location.pathname.slice(0, location.pathname.indexOf("/", 1)));
   const dropDownStyles =
     " text-center items-center rounded-sm w-160 p-3 z-10 top-8 right-0 bg-pink";
   const navElements: IHeaderNavigation[] = [
